@@ -37,7 +37,6 @@ async function run() {
 
     })
 
-    
 // save room for database........
 app.post('/rooms',async(req,res)=>{
   const room=req.body;
@@ -54,13 +53,13 @@ app.post('/bookings',async(req,res)=>{
   res.send(result)
 })
 
-// DELETE  booking..
-app.delete('/bookings/:id',async(req,res)=>{
-  const id =req.params.id
-const query={_id:new ObjectId(id)}
-const result=await bookingsCollection.deleteOne(query)
-res.send(result)
-})
+// // DELETE  booking..
+// app.delete('/bookings/:id',async(req,res)=>{
+//   const id =req.params.id
+// const query={_id:new ObjectId(id)}
+// const result=await bookingsCollection.deleteOne(query)
+// res.send(result)
+// })
 
 
 // update roomBooking state...
@@ -89,17 +88,13 @@ app.get('/bookings',async(req,res)=>{
   res.send(result)
   
 })
-
-
-
-
-// GET ALL ROOMS DATA......
+// get all ROOMS ......
 app.get('/rooms',async(req,res)=>{
   const result=await roomsCollection.find().toArray()
   res.send(result)
 })
-// delet room
-app.get('/rooms/:id',async(req,res)=>{
+// delet room..
+app.delete('/rooms/:id',async(req,res)=>{
   const id =req.params.id 
   const query={_id: new ObjectId(id) }
   const result=await roomsCollection.deleteOne(query)
